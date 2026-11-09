@@ -2,105 +2,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windows 11 Launcher | King Studios</title>
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- color:#fff;
- background:linear-gradient(135deg,#07152e,#102c58,#07152e);
- min-height:100vh;
-}
-header{
- padding:24px 8%;
- display:flex;
- justify-content:space-between;
- align-items:center;
- border-bottom:1px solid #ffffff20;
-}
-.logo{font-weight:bold;font-size:20px;letter-spacing:2px}
-.hero{
- min-height:75vh;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- text-align:center;
- padding:40px 20px;
-}
-.icon{
- font-size:75px;
- margin-bottom:20px;
-}
-h1{font-size:clamp(35px,7vw,65px);margin:10px}
-p{color:#c6d6ee;line-height:1.8;max-width:550px}
-.tag{
- color:#75b8ff;
- border:1px solid #438de8;
- border-radius:30px;
- padding:8px 18px;
- margin:15px;
-}
-.download{
- display:inline-block;
- margin:25px;
- padding:17px 38px;
- border-radius:12px;
- background:#1685f8;
- color:white;
- text-decoration:none;
- font-weight:bold;
- transition:.2s;
-}
-.download:hover{background:#43a5ff;transform:scale(1.04)}
-.info{display:flex;gap:25px;flex-wrap:wrap;justify-content:center;color:#b9d0ed}
-section{text-align:center;padding:35px 20px}
-footer{
- text-align:center;
- padding:25px;
- border-top:1px solid #ffffff20;
- color:#aabbd4;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <title>Windows 11 Launcher | KING STUDIOS</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #080d1b;
+      color: #f5f7ff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ffffff14;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #48a9ff;
+    }
+
+    nav a {
+      margin-left: 24px;
+      color: #c2cce0;
+      font-size: 14px;
+    }
+
+    .hero {
+      min-height: 570px;
+      padding: 90px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      background:
+        radial-gradient(circle at 80% 35%, #1765b044, transparent 38%),
+        radial-gradient(circle at 20% 90%, #263b8440, transparent 35%);
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 15px;
+      border: 1px solid #399bff66;
+      border-radius: 30px;
+      color: #65b7ff;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 65px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: #4ba9ff;
+    }
+
+    .hero p {
+      color: #aebbd1;
+      font-size: 17px;
+      max-width: 520px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 27px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #168bff, #526cff);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 8px 30px #168bff35;
+      transition: 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px #168bff60;
+    }
+
+    .secondary {
+      margin-left: 12px;
+      background: #ffffff12;
+      border: 1px solid #ffffff25;
+      box-shadow: none;
+    }
+
+    .hero-visual {
+      width: min(330px, 100%);
+      padding: 12px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #263b63, #101a30);
+      border: 1px solid #ffffff25;
+      box-shadow: 0 25px 70px #0008;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      display: block;
+      border-radius: 19px;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #9eacc3;
+      margin-bottom: 45px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      padding: 27px;
+      background: #111b2e;
+      border: 1px solid #ffffff12;
+      border-radius: 17px;
+      transition: 0.25s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      border-color: #399bff77;
+    }
+
+    .feature .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      margin-bottom: 9px;
+    }
+
+    .feature p {
+      color: #aab7cb;
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 22px;
+    }
+
+    .gallery-item {
+      background: #111b2e;
+      padding: 12px;
+      border-radius: 17px;
+      border: 1px solid #ffffff15;
+      transition: 0.25s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      border-color: #399bff88;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .gallery-item h3 {
+      text-align: center;
+      padding: 13px 5px 5px;
+      font-size: 15px;
+    }
+
+    .download-section {
+      text-align: center;
+      background: linear-gradient(135deg, #10294b, #10152b);
+      border-top: 1px solid #ffffff12;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .download-section p {
+      color: #b4c2d8;
+      margin: 12px 0 28px;
+    }
+
+    .version {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #91a4c1;
+    }
+
+    footer {
+      padding: 30px 8%;
+      text-align: center;
+      color: #8392aa;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #58afff;
+    }
+
+    @media (max-width: 750px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 65px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-visual {
+        max-width: 260px;
+      }
+
+      .secondary {
+        margin: 12px 0 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
- <div class="logo">KING STUDIOS</div>
- <div>Official Release</div>
-</header>
 
-<main class="hero">
- <div class="icon">🖥️</div>
- <div class="tag">VERSION 1.0.0</div>
- <h1>Windows 11 Launcher</h1>
- <p>
- Bring a Windows-inspired desktop experience
- to your Android phone or tablet.
- </p>
+  <header>
+    <div class="logo">KING <span>STUDIOS</span></div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#gallery">Screenshots</a>
+      <a href="#download">Download</a>
+    </nav>
+  </header>
 
- <a class="download"
- href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/download/V1.0.0/Windows.11.Launcher.1.apk">
- DOWNLOAD APK ↓
- </a>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="tag">ANDROID APPLICATION · VERSION 1.0.0</div>
 
- <div class="info">
-  <span>Android</span>
-  <span>23.1 MB</span>
-  <span>Free</span>
- </div>
-</main>
+        <h1>
+          Your phone.<br>
+          A new <span>Windows</span> experience.
+        </h1>
 
-<section>
- <h2>Experience a Desktop on Android</h2>
- <p>Discover Windows 11 Launcher by King Studios.</p>
-</section>
+        <p>
+          Discover a fresh desktop-inspired experience on Android.
+          Explore the Windows 11 Launcher by KING STUDIOS.
+        </p>
 
-<footer>
- © 2026 King Studios. All rights reserved.
- <p>Independent project. Not affiliated with Microsoft.</p>
-</footer>
+        <a class="button" href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/download/V1.0.0/Windows.11.Launcher.1.apk">
+          ↓ Download APK
+        </a>
+
+        <a class="button secondary" href="#gallery">
+          Explore Screenshots
+        </a>
+      </div>
+
+      <div class="hero-visual">
+        <img src="Home.png" alt="Windows 11 Launcher Home Screen">
+      </div>
+    </section>
+
+    <section id="features">
+      <h2 class="section-title">Designed for a New Experience</h2>
+      <p class="section-subtitle">
+        Explore the launcher and its different interfaces.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">🖥️</div>
+          <h3>Desktop Experience</h3>
+          <p>Bring a desktop-inspired look to your Android device.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">⚡</div>
+          <h3>Quick Interaction</h3>
+          <p>Explore convenient interactions and launcher controls.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">📱</div>
+          <h3>Widgets & Start</h3>
+          <p>Discover the Start interface and widget experience.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">✨</div>
+          <h3>Fresh Design</h3>
+          <p>Enjoy a modern visual style inspired by Windows 11.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2 class="section-title">Application Gallery</h2>
+      <p class="section-subtitle">
+        Take a closer look at the launcher.
+      </p>
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="Home.png" alt="Home Screen">
+          <h3>Home</h3>
+        </div>
+
+        <div class="gallery-item">
+          <img src="Start.png" alt="Start Menu">
+          <h3>Start</h3>
+        </div>
+
+        <div class="gallery-item">
+          <img src="Widgets.png" alt="Widgets">
+          <h3>Widgets</h3>
+        </div>
+
+        <div class="gallery-item">
+          <img src="Longpress.png" alt="Long Press">
+          <h3>Longpress</h3>
+        </div>
+
+        <div class="gallery-item">
+          <img src="Welcome.png" alt="Welcome Screen">
+          <h3>Welcome</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-section" id="download">
+      <h2 class="section-title">Ready to Try It?</h2>
+      <p>
+        Get Windows 11 Launcher and explore a different Android experience.
+      </p>
+
+      <a class="button" href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/download/V1.0.0/Windows.11.Launcher.1.apk">
+        Download for Android
+      </a>
+
+      <div class="version">
+        Version 1.0.0 · Android APK · KING STUDIOS
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 <strong>KING STUDIOS</strong>. All rights reserved.</p>
+    <p>Created with passion. Built for the future.</p>
+  </footer>
+
 </body>
 </html>
