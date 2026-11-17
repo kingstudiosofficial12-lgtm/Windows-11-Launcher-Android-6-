@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080d1b">
-  <title>Windows 11 Launcher | KING STUDIOS</title>
+  <meta name="description" content="KSGO Technology — Innovation, software and Android applications.">
+  <title>Windows 11 Launcher | KSGO Technology</title>
 
   <style>
     * {
@@ -102,11 +103,19 @@
       font-weight: 700;
       box-shadow: 0 8px 30px #168bff35;
       transition: 0.25s;
+      border: none;
+      cursor: pointer;
     }
 
     .button:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 35px #168bff60;
+    }
+
+    .button:disabled {
+      opacity: 0.5;
+      cursor: wait;
+      transform: none;
     }
 
     .secondary {
@@ -229,6 +238,50 @@
       color: #91a4c1;
     }
 
+    .release-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .release-card {
+      background: #111b2e;
+      border: 1px solid #ffffff15;
+      border-radius: 17px;
+      padding: 25px;
+    }
+
+    .release-card h3 {
+      color: #65b7ff;
+      margin-bottom: 7px;
+    }
+
+    .release-date {
+      color: #8392aa;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .release-notes {
+      color: #b4c2d8;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .release-link {
+      display: inline-block;
+      color: #65b7ff;
+      margin-top: 17px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .loading {
+      text-align: center;
+      color: #91a4c1;
+    }
+
     footer {
       padding: 30px 8%;
       text-align: center;
@@ -275,18 +328,24 @@
 <body>
 
   <header>
-    <div class="logo">KING <span>STUDIOS</span></div>
+    <div class="logo">KSGO <span>TECHNOLOGY ⚙</span></div>
+
     <nav>
       <a href="#features">Features</a>
       <a href="#gallery">Screenshots</a>
+      <a href="#releases">Releases</a>
       <a href="#download">Download</a>
     </nav>
   </header>
 
   <main>
+
     <section class="hero">
       <div class="hero-content">
-        <div class="tag">ANDROID APPLICATION · VERSION 1.0.0</div>
+
+        <div class="tag" id="hero-version">
+          ANDROID APPLICATION · LOADING VERSION...
+        </div>
 
         <h1>
           Your phone.<br>
@@ -295,11 +354,13 @@
 
         <p>
           Discover a fresh desktop-inspired experience on Android.
-          Explore the Windows 11 Launcher by KING STUDIOS.
+          Explore Windows 11 Launcher by KSGO Technology.
         </p>
 
-        <a class="button" href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/download/V1.0.0/Windows.11.Launcher.1.apk">
-          ↓ Download APK
+        <a class="button" id="hero-download"
+           href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/latest"
+           target="_blank" rel="noopener">
+          ↓ View Latest Release
         </a>
 
         <a class="button secondary" href="#gallery">
@@ -319,6 +380,7 @@
       </p>
 
       <div class="features">
+
         <div class="feature">
           <div class="icon">🖥️</div>
           <h3>Desktop Experience</h3>
@@ -342,6 +404,7 @@
           <h3>Fresh Design</h3>
           <p>Enjoy a modern visual style inspired by Windows 11.</p>
         </div>
+
       </div>
     </section>
 
@@ -352,6 +415,7 @@
       </p>
 
       <div class="gallery">
+
         <div class="gallery-item">
           <img src="Home.png" alt="Home Screen">
           <h3>Home</h3>
@@ -376,29 +440,204 @@
           <img src="Welcome.png" alt="Welcome Screen">
           <h3>Welcome</h3>
         </div>
+
+      </div>
+    </section>
+
+    <section id="releases">
+      <h2 class="section-title">Release History</h2>
+      <p class="section-subtitle">
+        Follow the latest updates and improvements.
+      </p>
+
+      <div class="release-list" id="release-list">
+        <p class="loading">Loading releases from GitHub...</p>
       </div>
     </section>
 
     <section class="download-section" id="download">
       <h2 class="section-title">Ready to Try It?</h2>
-      <p>
+
+      <p id="download-description">
         Get Windows 11 Launcher and explore a different Android experience.
       </p>
 
-      <a class="button" href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/download/V1.0.0/Windows.11.Launcher.1.apk">
-        Download for Android
+      <a class="button" id="main-download"
+         href="https://github.com/kingstudiosofficial12-lgtm/Windows-11-Launcher-Android-6-/releases/latest"
+         target="_blank" rel="noopener">
+        Download Latest Version
       </a>
 
-      <div class="version">
-        Version 1.0.0 · Android APK · KING STUDIOS
+      <div class="version" id="version-info">
+        Checking latest version...
       </div>
     </section>
+
   </main>
 
   <footer>
-    <p>© 2026 <strong>KING STUDIOS</strong>. All rights reserved.</p>
-    <p>Created with passion. Built for the future.</p>
+    <p>© 2026 <strong>KSGO Technology ⚙</strong>. All rights reserved.</p>
+    <p>Technology. Innovation. Development.</p>
   </footer>
+
+  <script>
+    const OWNER = "kingstudiosofficial12-lgtm";
+    const REPO = "Windows-11-Launcher-Android-6-";
+
+    const API_URL =
+      `https://api.github.com/repos/${OWNER}/${REPO}/releases`;
+
+    const LATEST_URL =
+      `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`;
+
+    const RELEASES_PAGE =
+      `https://github.com/${OWNER}/${REPO}/releases`;
+
+    function formatDate(date) {
+      if (!date) return "Date unavailable";
+
+      return new Date(date).toLocaleDateString("en", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
+
+    function createReleaseCard(release) {
+      const card = document.createElement("div");
+      card.className = "release-card";
+
+      const title = document.createElement("h3");
+      title.textContent =
+        release.name || release.tag_name || "Release";
+
+      const date = document.createElement("div");
+      date.className = "release-date";
+      date.textContent = formatDate(release.published_at);
+
+      const notes = document.createElement("p");
+      notes.className = "release-notes";
+      notes.textContent =
+        release.body || "Release notes are not available.";
+
+      const link = document.createElement("a");
+      link.className = "release-link";
+      link.href = release.html_url || RELEASES_PAGE;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = "View Release →";
+
+      card.append(title, date, notes, link);
+
+      return card;
+    }
+
+    async function loadLatestRelease() {
+      try {
+        const response = await fetch(LATEST_URL);
+
+        if (!response.ok) {
+          throw new Error("Could not retrieve latest release");
+        }
+
+        const release = await response.json();
+
+        const version = release.tag_name || "Latest";
+        const apk = release.assets?.find(asset =>
+          asset.name.toLowerCase().endsWith(".apk")
+        );
+
+        const downloadUrl = apk
+          ? apk.browser_download_url
+          : release.html_url || RELEASES_PAGE;
+
+        document.getElementById("hero-version").textContent =
+          `ANDROID APPLICATION · ${version}`;
+
+        document.getElementById("hero-download").href =
+          downloadUrl;
+
+        document.getElementById("hero-download").textContent =
+          apk ? "↓ Download APK" : "View Release";
+
+        document.getElementById("main-download").href =
+          downloadUrl;
+
+        document.getElementById("main-download").textContent =
+          apk ? `Download ${version} · APK` : "View Latest Release";
+
+        document.getElementById("version-info").textContent =
+          `${version} · Android APK · KSGO Technology`;
+
+        document.getElementById("download-description").textContent =
+          `Download ${version} and explore the latest Android experience.`;
+
+      } catch (error) {
+        console.error("Latest release error:", error);
+
+        document.getElementById("hero-version").textContent =
+          "ANDROID APPLICATION";
+
+        document.getElementById("version-info").textContent =
+          "Release information temporarily unavailable.";
+
+        document.getElementById("hero-download").href =
+          RELEASES_PAGE;
+
+        document.getElementById("main-download").href =
+          RELEASES_PAGE;
+      }
+    }
+
+    async function loadReleaseHistory() {
+      const container = document.getElementById("release-list");
+
+      try {
+        const response = await fetch(`${API_URL}?per_page=10`);
+
+        if (!response.ok) {
+          throw new Error("Could not retrieve release history");
+        }
+
+        const releases = await response.json();
+
+        container.replaceChildren();
+
+        const publishedReleases = releases.filter(release =>
+          !release.draft && !release.prerelease
+        );
+
+        if (publishedReleases.length === 0) {
+          container.textContent = "No published releases yet.";
+          return;
+        }
+
+        publishedReleases.forEach(release => {
+          container.appendChild(createReleaseCard(release));
+        });
+
+      } catch (error) {
+        console.error("Release history error:", error);
+
+        container.replaceChildren();
+
+        const message = document.createElement("p");
+        message.className = "loading";
+        message.textContent =
+          "Unable to load release history. Please visit GitHub.";
+
+        const link = document.createElement("a");
+        link.href = RELEASES_PAGE;
+        link.textContent = " View all releases →";
+        link.className = "release-link";
+
+        container.append(message, link);
+      }
+    }
+
+    loadLatestRelease();
+    loadReleaseHistory();
+  </script>
 
 </body>
 </html>
